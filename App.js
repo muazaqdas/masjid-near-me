@@ -7,10 +7,6 @@ import Home from './src/screens/mainScreens/Home';
 import Login from './src/screens/authenticationScreens/Login';
 import AuthContext from './src/store/context/AuthContext';
 import Signup from './src/screens/authenticationScreens/Signup';
-import { GroupProvider } from './src/store/context/GroupContext';
-import CreateGroup from './src/screens/mainScreens/CreateGroup';
-import GroupDetail from './src/screens/mainScreens/GroupDetail';
-import TransactionDetail from './src/screens/mainScreens/TransactionDetail';
 import { initDatabase } from './src/database/db';
 import { deleteDatabaseAsync, SQLiteProvider } from 'expo-sqlite';
 
@@ -107,7 +103,6 @@ export default function App() {
     <React.Suspense fallback={<SplashScreen/>}>
       <SQLiteProvider databaseName="expense_tracker.db" onInit={initDatabase} useSuspense>
         <AuthContext.Provider value={authContext}>
-          <GroupProvider>
             <NavigationContainer>
               <Stack.Navigator>
               {
@@ -138,15 +133,11 @@ export default function App() {
                     // User is signed in
                     <Stack.Group>
                       <Stack.Screen name="Home" component={Home} />
-                      <Stack.Screen name="CreateGroup" component={CreateGroup} />
-                      <Stack.Screen name="GroupDetail" component={GroupDetail} />
-                      <Stack.Screen name="TransactionDetail" component={TransactionDetail} />
                     </Stack.Group>
                   )
               }
               </Stack.Navigator>
             </NavigationContainer>
-          </GroupProvider>
         </AuthContext.Provider>
       </SQLiteProvider>
     </React.Suspense>

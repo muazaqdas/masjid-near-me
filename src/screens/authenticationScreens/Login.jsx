@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     borderTopEndRadius:28, 
     borderTopStartRadius:28, 
     // backgroundColor:COLOR.tertiary, 
-    minHeight: (height - width + 40), 
+    minHeight: height,
     elevation:2, 
     shadowColor:COLOR.tertiary, 
     shadowOpacity: 0.5, 
